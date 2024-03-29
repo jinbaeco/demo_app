@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        dockerHubRegistry = 'jinbaeco/demo'
+        dockerHubRegistry = 'jinbaeco/demo_app'
         dockerHubRegistryCredential = credentials('dockerhub')
     }
 
