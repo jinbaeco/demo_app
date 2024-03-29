@@ -84,8 +84,8 @@ pipeline {
         stage('K8S Manifest Update') {
 	        steps {
 	            //git credentialsId: 'jenkins',
-                git url: 'https://github.com/jinbaeco/demo_app.git',
-                branch: 'master'
+                git url: 'https://github.com/jinbaeco/manifest.git',
+                branch: 'main'
 				   
 				 //sh "git config --global user.email 'jinbaeco@naver.com'"
 				
@@ -94,7 +94,7 @@ pipeline {
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
 	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) {
-	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
+	                sh "git remote set-url origin https://github.com/jinbaeco/manifest.git"
 	                sh "git config --global user.name 'jinbaeco'"
 	                sh "git config --global user.password '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'"
 	                sh "git push origin master"			
