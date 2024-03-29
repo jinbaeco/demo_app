@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'master',url: 'https://github.com/jinbaeco/demo.git'
+                git branch: 'master',url: 'https://github.com/jinbaeco/demo_app.git'
                 //git credentialsId: 'github_ssh',
                 //git url: 'https://github.com/jinbaeco/demo.git',
                 //branch: 'master'
@@ -38,7 +38,7 @@ pipeline {
         //dockerfile기반 빌드하는 stage ,git소스 root에 dockerfile이 있어야한다
         stage('Docker Image Build'){   
             steps {
-            	sh "cp target/demo-0.0.1-SNAPSHOT.jar ./"
+            	sh "cp target/demo_app-0.0.1-SNAPSHOT.jar ./"
                 sh "docker build . -t ${dockerHubRegistry}:${currentBuild.number}"
                 sh "docker build . -t ${dockerHubRegistry}:latest"
             }
@@ -84,7 +84,7 @@ pipeline {
         stage('K8S Manifest Update') {
 	        steps {
 	            //git credentialsId: 'jenkins',
-                git url: 'https://github.com/jinbaeco/demo.git',
+                git url: 'https://github.com/jinbaeco/demo_app.git',
                 branch: 'master'
 				   
 				sh "git config --global user.email 'jinbaeco@naver.com'"
@@ -95,7 +95,7 @@ pipeline {
 	            sh "git commit -m '[UPDATE] demo ${currentBuild.number} image versioning'"
 	            
 	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) {
-	                sh "git remote set-url origin https://github.com/jinbaeco/demo.git"
+	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
 	                sh "git push origin master"			
                 }
         	}    
