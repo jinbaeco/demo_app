@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: pipeline
+      version: v1
+  template:
+    metadata:
+      labels:
+        type: pipeline
+        version: v1
+    spec:
+      containers:
+        - name: demo
+          image: jinbaeco/demo:latest
+          ports:
+            - containerPort: 8080 

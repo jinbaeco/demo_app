@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+spec:
+  selector:
+    type: pipeline
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30050 
