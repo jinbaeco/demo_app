@@ -87,8 +87,7 @@ pipeline {
                 git url: 'https://github.com/jinbaeco/demo_app.git',
                 branch: 'master'
 				   
-				sh "git config --global user.email 'jinbaeco@naver.com'"
-				sh "git config --global user.name 'jinbaeco'"
+				//sh "git config --global user.email 'jinbaeco@naver.com'"
 				
 	            sh "sed -i 's/demo_app:.*\$/demo_app:${currentBuild.number}/g' demo_deployment.yaml"
 	            sh "git add demo_deployment.yaml"
@@ -96,6 +95,8 @@ pipeline {
 	            
 	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) {
 	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
+	                sh "git config --global user.name 'jinbaeco'"
+	                sh "git config --global user.password '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'"
 	                sh "git push origin master"			
                 }
         	}    
