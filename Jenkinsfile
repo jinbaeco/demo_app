@@ -88,7 +88,7 @@ pipeline {
                 branch: 'main'
 				   
 				 //sh "git config --global user.email 'jinbaeco@naver.com'"
-				
+				 
 	            sh "sed -i 's/demo_app:.*\$/demo_app:${currentBuild.number}/g' demo_deployment.yaml"
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
