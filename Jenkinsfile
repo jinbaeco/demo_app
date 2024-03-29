@@ -98,7 +98,7 @@ pipeline {
 	                sh "git config --global user.name 'jinbaeco'"
 	                sh "git config --global user.password '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'"
 	                sh "git push origin master"			
-                }
+                } 
         	}    
 		}
 		
