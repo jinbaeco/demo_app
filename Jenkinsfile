@@ -58,7 +58,7 @@ pipeline {
         		sh "echo $dockerHubRegistryCredential_PSW | docker login -u $dockerHubRegistryCredential_USR --password-stdin"
         	}
         }
-        /*
+        
         stage('Docker Image Push') {
         	steps {
         		script {
@@ -80,7 +80,7 @@ pipeline {
                     }
             }
         }
-        */
+        
         stage('K8S Manifest Update') {
 	        steps {
 	            //git credentialsId: 'jenkins',
