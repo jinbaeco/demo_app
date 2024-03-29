@@ -93,12 +93,12 @@ pipeline {
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
-	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) {   
+	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) { 
 	                sh "git remote set-url origin https://github.com/jinbaeco/manifest.git"
 	                sh "git config --global user.name 'jinbaeco'"
 	                sh "git config --global user.password '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'"
-	                sh "git push origin master"			
-                } 
+	                sh "git push origin main"			
+                }
         	}    
 		}
 		
