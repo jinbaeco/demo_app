@@ -38,7 +38,7 @@ pipeline {
         //dockerfile기반 빌드하는 stage ,git소스 root에 dockerfile이 있어야한다
         stage('Docker Image Build'){   
             steps {
-            	sh "cp target/demo_app-0.0.1-SNAPSHOT.jar ./"
+            	//sh "cp target/demo_app-0.0.1-SNAPSHOT.jar ./"
                 sh "docker build . -t ${dockerHubRegistry}:${currentBuild.number}"
                 sh "docker build . -t ${dockerHubRegistry}:latest"
             }
