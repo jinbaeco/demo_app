@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: demoapp-deploy
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
       type: pipeline
