@@ -84,7 +84,7 @@ pipeline {
         
         stage('K8S Manifest Update') {
 	        steps {
-	            git credentialsId: 'f60e188f-1463-4a29-87fa-38f8ec9442cb',
+	            git credentialsId: 'jenkins_github',
                 url: 'https://github.com/jinbaeco/demo_app.git',
                 branch: 'main'
 				   
@@ -95,7 +95,7 @@ pipeline {
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	                             
-                withCredentials([gitUsernamePassword(credentialsId: 'f60e188f-1463-4a29-87fa-38f8ec9442cb',
+                withCredentials([gitUsernamePassword(credentialsId: 'jenkins_github',
                                      gitToolName: 'git-tool')]) {
                         sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
                         sh "git push -u origin main"
