@@ -86,7 +86,7 @@ pipeline {
 	        steps {
 	            git credentialsId: 'github_manifest',
                 url: 'https://github.com/jinbaeco/demo_app.git',
-                branch: 'main'
+                branch: 'master'
 				   
 				sh "git config --global user.email 'jinbaeco@naver.com'"
 				sh "git config --global user.name 'jinbaeco'"
