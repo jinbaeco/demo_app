@@ -84,7 +84,7 @@ pipeline {
         
         stage('K8S Manifest Update') {
 	        steps {
-	            git credentialsId: 'github_manifest',
+	            git credentialsId: 'github_jenkins_new',
                 url: 'https://github.com/jinbaeco/manifest.git',
                 branch: 'main'
 				   
