@@ -98,7 +98,7 @@ pipeline {
                 withCredentials([gitUsernamePassword(credentialsId: 'github_manifest',
                                      gitToolName: 'git-tool')]) {
                         sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
-                        sh "git push -u origin main"
+                        sh "git push -u origin master"
 				}
         	}    
 		}
