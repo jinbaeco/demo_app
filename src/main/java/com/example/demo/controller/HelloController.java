@@ -9,7 +9,7 @@ public class HelloController {
 	@RequestMapping("/")
 	public String index() {
 		
-		return "Hello World argocd";
+		return "Hello World argocd 2024-04-02";
 		
 	}
 }
