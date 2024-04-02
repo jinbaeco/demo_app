@@ -96,10 +96,11 @@ pipeline {
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
 	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) { 
-	                sh "git remote set-url origin https://github.com/jinbaeco/manifest.git"
-	                sh "git push origin master"			
+	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
+	                sh "git config --global --unset credential.helper"	                
+	                sh "git push -u origin master"
                 }
         	}    
-		}
+		}	
     }
 }
