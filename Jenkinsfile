@@ -81,28 +81,26 @@ pipeline {
             }
         }
         
-        /*
+        
         stage('K8S Manifest Update') {
 	        steps {
-	            --git credentialsId: 'jenkins',
-                git url: 'https://github.com/jinbaeco/manifest.git',
+	            git credentialsId: 'f60e188f-1463-4a29-87fa-38f8ec9442cb',
+                url: 'https://github.com/jinbaeco/demo_app.git',
                 branch: 'main'
 				   
-				 --sh "git config --global user.email 'jinbaeco@naver.com'"
+				sh "git config --global user.email 'jinbaeco@naver.com'"
+				sh "git config --global user.name 'jinbaeco'"
 				 
 	            sh "sed -i 's/demo_app:.*\$/demo_app:${currentBuild.number}/g' demo_deployment.yaml"
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
-	             
-	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) { 
-	                sh "git remote set-url origin https://github.com/jinbaeco/manifest.git"
-	                sh "git config --global user.name 'jinbaeco'"
-	                --sh "git config --global user.password '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'"
-	                sh "git push origin main"			
-                }
+	                             
+                withCredentials([gitUsernamePassword(credentialsId: 'f60e188f-1463-4a29-87fa-38f8ec9442cb',
+                                     gitToolName: 'git-tool')]) {
+                        sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
+                        sh "git push -u origin main"
+				}
         	}    
 		}
-		*/
-		
     }
 }
