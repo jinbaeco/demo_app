@@ -90,14 +90,14 @@ pipeline {
 				   
 				sh "git config --global user.email 'jinbaeco@naver.com'"
 				sh "git config --global user.name 'jinbaeco'"
+				sh "git config --global --unset credential.helper"	    
 				 
 	            sh "sed -i 's/demo_app:.*\$/demo_app:${currentBuild.number}/g' demo_deployment.yaml"
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
 	            sshagent(credentials: ['f60e188f-1463-4a29-87fa-38f8ec9442cb']) { 
-	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"
-	                sh "git config --global --unset credential.helper"	                
+	                sh "git remote set-url origin https://github.com/jinbaeco/demo_app.git"                
 	                sh "git push -u origin master"
                 }
         	}    
