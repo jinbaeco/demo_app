@@ -96,7 +96,7 @@ pipeline {
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
 	            //sshagent(credentials: ['github_jenkins_new']) { 
-	                sh "git remote set-url origin https://github.com/jinbaeco/manifest.git"                
+	                sh "git remote set-url origin https://jinbaeco@github.com/jinbaeco/manifest.git"                
 	                sh "git push -u origin main"
                 //}
         	}    
