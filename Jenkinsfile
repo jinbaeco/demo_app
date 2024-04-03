@@ -95,10 +95,10 @@ pipeline {
 	            sh "git add demo_deployment.yaml"
 	            sh "git commit -m '[UPDATE] demo_app ${currentBuild.number} image versioning'"
 	             
-	            //sshagent(credentials: ['github_jenkins_new']) { 
+	            sshagent(credentials: ['github_jenkins_new']) { 
 	                sh "git remote set-url origin https://jinbaeco@github.com/jinbaeco/manifest.git"                
 	                sh "git push -u origin main"
-                //}
+                }
         	}    
 		}	
     }
